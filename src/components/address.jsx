@@ -5,7 +5,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-
+import NavBar from "./navbar";
 import "../App.css";
 
 class Address extends Component {
@@ -28,6 +28,8 @@ class Address extends Component {
       );
   }
 
+  createAddress() {}
+
   UNSAFE_componentWillMount() {
     this.fetchAddress();
   }
@@ -35,17 +37,20 @@ class Address extends Component {
   render() {
     var addresses = this.state.addressList;
     return (
-      <div className="container">
-        <div id="task-container">
-          <div id="list-wrapper" className="mater">
-            <h1> Addresses</h1>
-            {addresses.map(function (address, index) {
-              return (
-                <div key={index} className="task-wrapper flex-wrapper">
-                  <span>{address.street}</span>
-                </div>
-              );
-            })}
+      <div>
+        <NavBar />
+        <div className="container">
+          <div id="task-container">
+            <div id="list-wrapper" className="mater">
+              <h1> Addresses</h1>
+              {addresses.map(function (address, index) {
+                return (
+                  <div key={index} className="task-wrapper flex-wrapper">
+                    <span>{address.street}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

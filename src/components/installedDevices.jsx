@@ -38,7 +38,6 @@ class InstalledDevices extends Component {
     var installedDeviceList = this.state.installedDeviceList;
     return (
       <div>
-        <Navbar />
         <div className="container">
           <div id="task-container">
             <div id="list-wrapper" className="mater">

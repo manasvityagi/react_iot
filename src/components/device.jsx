@@ -5,7 +5,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-
+import NavBar from "./navbar";
 import "../App.css";
 
 class DevicesAvailable extends Component {
@@ -18,7 +18,7 @@ class DevicesAvailable extends Component {
   }
 
   fechTasks() {
-    fetch("http://127.0.0.1:8000/address/")
+    fetch("http://127.0.0.1:8000/devices/")
       .then((response) => response.json())
       .then(console.log("fetching"))
       .then((response) =>
@@ -35,17 +35,20 @@ class DevicesAvailable extends Component {
   render() {
     var addresses = this.state.deviceList;
     return (
-      <div className="container">
-        <div id="task-container">
-          <div id="list-wrapper" className="mater">
-            <h1> Addresses</h1>
-            {addresses.map(function (address, index) {
-              return (
-                <div key={index} className="task-wrapper flex-wrapper">
-                  <span>{address.street}</span>
-                </div>
-              );
-            })}
+      <div>
+        <NavBar />
+        <div className="container">
+          <div id="task-container">
+            <div id="list-wrapper" className="mater">
+              <h1> Devices On Catalogue</h1>
+              {addresses.map(function (address, index) {
+                return (
+                  <div key={index} className="task-wrapper flex-wrapper">
+                    <span>{address.description}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
