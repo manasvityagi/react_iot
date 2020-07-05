@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 import NavBar from "./navbar";
 
 import "../App.css";
@@ -38,7 +33,7 @@ class Manufacturer extends Component {
     return (
       <div>
         <NavBar />
-        <div className="container">
+        <Container maxWidth="sm">
           <div id="task-container">
             <div id="list-wrapper" className="mater">
               <h1> Manufacturer</h1>
@@ -51,7 +46,7 @@ class Manufacturer extends Component {
               })}
             </div>
           </div>
-        </div>
+        </Container>
       </div>
     );
   }

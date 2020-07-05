@@ -6,23 +6,23 @@ import InstalledDevices from "./components/installedDevices";
 import Addresses from "./components/address";
 import Manufacturer from "./components/manufacturer";
 import DevicesAvailable from "./components/device";
+import { Button, Divider, Paper } from "@material-ui/core";
 
 // One stateful class-based component
 class App extends Component {
   state = { selectedComponent: "" };
   constructor() {
     super();
-    console.log("App - Constrktr called");
+    console.log("called Construktr App");
   }
 
   componentDidMount() {
-    console.log("App - componentDidMount called");
+    console.log("called componentDidMount");
   }
 
   handleSelect = (event) => {
     this.setState({ selectedComponent: event.target.name });
   };
-
   // App component has two child, Navbar and Devices
   render() {
     if (this.state.selectedComponent === "Addresses") {
@@ -31,7 +31,6 @@ class App extends Component {
     if (this.state.selectedComponent === "Manufacturer") {
       return <Manufacturer />;
     }
-
     if (this.state.selectedComponent === "DevicesAvailable") {
       return <DevicesAvailable />;
     }
@@ -40,19 +39,37 @@ class App extends Component {
     return (
       <React.Fragment>
         <NavBar />
-        <button onClick={this.handleSelect} name="Addresses">
-          Addresses
-        </button>
-        <button onClick={this.handleSelect} name="Manufacturer">
-          Manufacturers List
-        </button>
-        <button onClick={this.handleSelect} name="DevicesAvailable">
+
+        <Button
+          variant="contained"
+          onClick={() => {
+            this.setState({ selectedComponent: "Addresses" });
+          }}
+        >
+          Addresseses
+        </Button>
+
+        <Button
+          variant="contained"
+          onClick={() => {
+            this.setState({ selectedComponent: "Manufacturer" });
+          }}
+        >
+          Manufacturer
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            this.setState({ selectedComponent: "DevicesAvailable" });
+          }}
+        >
           Devices Available
-        </button>
-        <main className="container">
-          {/* Home Page is the list of installed devices */}
-          <InstalledDevices />
-        </main>
+        </Button>
+        <Divider light />
+        <Paper elevation={1} />
+        <main className="container"></main>
+        {/* Home Page is the list of installed devices */}
+        <InstalledDevices />
       </React.Fragment>
     );
   }

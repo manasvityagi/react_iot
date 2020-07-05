@@ -1,13 +1,17 @@
-import React, { Component } from "react";
-
+import React from "react";
+import { AppBar } from "@material-ui/core";
 //One stateless function-based component
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-dark bg-dark">
-      <a className="navbar-brand" href="_blank">
-        Home <span className="badge badge-pill badge-secondary"></span>
-      </a>
-    </nav>
+    <React.Fragment>
+      <AppBar position="static">
+        <nav className="navbar navbar-dark bg-dark">
+          <a className="navbar-brand" href="_blank">
+            Home <span className="badge badge-pill badge-secondary"></span>
+          </a>
+        </nav>
+      </AppBar>
+    </React.Fragment>
   );
 };
 

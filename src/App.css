@@ -41,6 +41,11 @@ strike {
   border-radius: 5px;
 }
 
+#bpad {
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
 #form-wrapper {
   position: -webkit-sticky;
   position: sticky;

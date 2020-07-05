@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import { Button } from "@material-ui/core";
 import NavBar from "./navbar";
 import "../App.css";
 
@@ -28,7 +23,21 @@ class Address extends Component {
       );
   }
 
-  createAddress() {}
+  createAddress() {
+    var formdata = new FormData();
+    formdata.append("zip", "01");
+    formdata.append("street", "New Str3");
+
+    var requestOptions = {
+      method: "POST",
+      body: formdata,
+    };
+
+    fetch("http://127.0.0.1:8000/address/", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  }
 
   UNSAFE_componentWillMount() {
     this.fetchAddress();
@@ -42,6 +51,7 @@ class Address extends Component {
         <div className="container">
           <div id="task-container">
             <div id="list-wrapper" className="mater">
+              app
               <h1> Addresses</h1>
               {addresses.map(function (address, index) {
                 return (
@@ -51,6 +61,9 @@ class Address extends Component {
                 );
               })}
             </div>
+            <Button onClick={this.createAddress} name="Manufacturer">
+              Add Address
+            </Button>
           </div>
         </div>
       </div>
