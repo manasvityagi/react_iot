@@ -13,17 +13,26 @@ function Manufacturer() {
   function receiveMessage() {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve("🤡");
-      }, 5000);
+        resolve("The message from past, using async await");
+        //setter in local storage
+        localStorage.setItem("key1", 1);
+        //getter in local storage
+        console.log(localStorage.getItem("key1"));
+        //setter in session storage
+        sessionStorage.setItem("key2", 2);
+        //getter in session storage
+        console.log(sessionStorage.getItem("key2"));
+      }, 2500);
     });
   }
-
+  //This is a sample for assignemnt requirement, a message is sent
+  // and the message is receivevd after 2000 ms
   async function requestMessage() {
     const msg = await receiveMessage();
     console.log("Message:", msg);
   }
 
-  requestMessage(); // Message: 🤡 <-- after 2 seconds
+  requestMessage();
 
   React.useEffect(() => {
     fetch("http://127.0.0.1:8000/manufacturer/")
@@ -55,7 +64,7 @@ function Manufacturer() {
               {items.map(function (item, index) {
                 return (
                   <div key={index} className="task-wrapper flex-wrapper">
-                    <span>{item.street}</span>
+                    <span>{item.name}</span>
                   </div>
                 );
               })}

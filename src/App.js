@@ -4,7 +4,7 @@ import "./App.css";
 import NavBar from "./components/navbar";
 import InstalledDevices from "./components/installedDevices";
 import Addresses from "./components/address";
-import Manufacturer from "./components/manufacturer";
+import Manufacturer from "./components/manufacturerfX";
 import DevicesAvailable from "./components/device";
 import { Button, Divider, Paper } from "@material-ui/core";
 
