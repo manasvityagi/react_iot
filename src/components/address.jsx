@@ -17,7 +17,6 @@ class Address extends Component {
     };
     this.fetchAddress = this.fechTasks.bind(this);
   }
-  r;
 
   fechTasks() {
     fetch("http://127.0.0.1:8000/address/")
@@ -98,28 +97,26 @@ class Address extends Component {
   };
 
   //Delete of CRUD : This performs the delete operation at the top of the stack
-  // Not correct way of doing it
+  //Not correct way of deleting, becausem delete operaion should be within the UI elementwhich needs to be deleted
+  // But i do not know at thi spoint how to do that
   deleteAddress = (e) => {
-    e.preventDefault();
-    console.log(this.state.zip);
-    console.log(this.state.street);
-
-    var formdata = new FormData();
-
-    formdata.append("street", this.state.street);
-    formdata.append("zip", this.state.zip);
+    var raw = "";
+    let topStackid = this.state.addressList[0].id;
 
     var requestOptions = {
-      method: "PUT",
-      body: formdata,
+      method: "DELETE",
+      body: raw,
+      redirect: "follow",
     };
-
-    fetch("http://127.0.0.1:8000/address/1/", requestOptions)
+    let url = "http://127.0.0.1:8000/address/" + topStackid + "/";
+    console.log(url);
+    fetch(url, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
   };
 
+  //# Read on CRUD
   UNSAFE_componentWillMount() {
     this.fetchAddress();
   }
@@ -141,7 +138,7 @@ class Address extends Component {
         <NavBar />
         <div className="container">
           <div id="task-container">
-            <div id="list-wrapper" className="mater">
+            <div id="list-wrapper">
               <div>
                 <Typography variant="h5" color="inherit">
                   Add Addresses
@@ -173,6 +170,7 @@ class Address extends Component {
                     </form>
                   </div>
                 </div>
+                <Divider dark />
                 <Typography variant="h5" color="inherit">
                   Update Addresses
                 </Typography>
@@ -203,32 +201,15 @@ class Address extends Component {
                     </form>
                   </div>
                 </div>
+                <Divider dark />
                 <Typography variant="h5" color="inherit">
                   Delete Addresses
                 </Typography>
                 <div>
                   <div>
                     <form onSubmit={this.deleteAddress}>
-                      <div>
-                        <label>Street</label>
-                        <input
-                          type="text"
-                          name="street"
-                          value={street}
-                          onChange={this.changeHandler}
-                        />
-                      </div>
-                      <div>
-                        <label>Zip</label>
-                        <input
-                          type="text"
-                          name="zip"
-                          value={zip}
-                          onChange={this.changeHandler}
-                        />
-                      </div>
                       <Button variant="outlined" color="primary" type="submit">
-                        Submit
+                        Delete One Address
                       </Button>
                     </form>
                   </div>
