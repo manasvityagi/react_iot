@@ -74,7 +74,8 @@ class Address extends Component {
       .catch((error) => console.log("error", error));
   };
 
-  //Update of CRUD
+  //Update of CRUD : This always updates the first record
+  // Not correct way of doing it
   updateAddress = (e) => {
     e.preventDefault();
     console.log(this.state.zip);
@@ -85,15 +86,38 @@ class Address extends Component {
     formdata.append("street", this.state.street);
     formdata.append("zip", this.state.zip);
 
-    // var requestOptions = {
-    //   method: "POST",
-    //   body: formdata,
-    // };
+    var requestOptions = {
+      method: "PUT",
+      body: formdata,
+    };
 
-    // fetch("http://127.0.0.1:8000/address/", requestOptions)
-    //   .then((response) => response.text())
-    //   .then((result) => console.log(result))
-    //   .catch((error) => console.log("error", error));
+    fetch("http://127.0.0.1:8000/address/1/", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
+
+  //Delete of CRUD : This performs the delete operation at the top of the stack
+  // Not correct way of doing it
+  deleteAddress = (e) => {
+    e.preventDefault();
+    console.log(this.state.zip);
+    console.log(this.state.street);
+
+    var formdata = new FormData();
+
+    formdata.append("street", this.state.street);
+    formdata.append("zip", this.state.zip);
+
+    var requestOptions = {
+      method: "PUT",
+      body: formdata,
+    };
+
+    fetch("http://127.0.0.1:8000/address/1/", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
   };
 
   UNSAFE_componentWillMount() {
@@ -154,7 +178,37 @@ class Address extends Component {
                 </Typography>
                 <div>
                   <div>
-                    <form onSubmit={this.addAddress}>
+                    <form onSubmit={this.updateAddress}>
+                      <div>
+                        <label>Street</label>
+                        <input
+                          type="text"
+                          name="street"
+                          value={street}
+                          onChange={this.changeHandler}
+                        />
+                      </div>
+                      <div>
+                        <label>Zip</label>
+                        <input
+                          type="text"
+                          name="zip"
+                          value={zip}
+                          onChange={this.changeHandler}
+                        />
+                      </div>
+                      <Button variant="outlined" color="primary" type="submit">
+                        Submit
+                      </Button>
+                    </form>
+                  </div>
+                </div>
+                <Typography variant="h5" color="inherit">
+                  Delete Addresses
+                </Typography>
+                <div>
+                  <div>
+                    <form onSubmit={this.deleteAddress}>
                       <div>
                         <label>Street</label>
                         <input
