@@ -76,10 +76,3 @@ class App extends Component {
 }
 
 export default App;
-
-//One stateful function-based component which uses Hooks
-class ModelsAvailable extends React.Component {
-  render() {
-    return <h1>Hello world! This is Component ModelsAvailable</h1>;
-  }
-}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NavBar from "./navbar";
 import "../App.css";
-
+import Container from "@material-ui/core/Container";
 class DevicesAvailable extends Component {
   constructor(props) {
     super(props);
@@ -31,20 +31,22 @@ class DevicesAvailable extends Component {
     return (
       <div>
         <NavBar />
-        <div className="container">
-          <div id="task-container">
-            <div id="list-wrapper" className="mater">
-              <h1> Devices On Catalogue</h1>
-              {addresses.map(function (address, index) {
-                return (
-                  <div key={index} className="task-wrapper flex-wrapper">
-                    <span>{address.description}</span>
-                  </div>
-                );
-              })}
+        <Container maxWidth="sm">
+          <div className="container">
+            <div id="task-container">
+              <div id="list-wrapper" className="mater">
+                <h1> Devices On Catalogue</h1>
+                {addresses.map(function (address, index) {
+                  return (
+                    <div key={index} className="task-wrapper flex-wrapper">
+                      <span>{address.description}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
-        </div>
+        </Container>
       </div>
     );
   }
