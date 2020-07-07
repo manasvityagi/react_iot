@@ -12,7 +12,7 @@ class InstalledDevices extends Component {
   }
 
   fetchInstalledDevices() {
-    fetch("http://127.0.0.1:8000/devices/")
+    fetch("http://3.25.104.164:8000/devices/")
       .then((response) => response.json())
       .then(console.log("fetching InstalledDevices"))
       .then((response) =>

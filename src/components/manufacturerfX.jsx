@@ -35,7 +35,7 @@ function Manufacturer() {
   requestMessage();
 
   React.useEffect(() => {
-    fetch("http://127.0.0.1:8000/manufacturer/")
+    fetch("http://3.25.104.164:8000/manufacturer/")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -60,7 +60,7 @@ function Manufacturer() {
         <div className="container">
           <div id="task-container">
             <div id="list-wrapper" className="mater">
-              <h1> Addresses</h1>
+              <h1> Manufacturer</h1>
               {items.map(function (item, index) {
                 return (
                   <div key={index} className="task-wrapper flex-wrapper">

@@ -14,7 +14,7 @@ class Manufacturer extends Component {
   }
 
   fechTasks() {
-    fetch("http://127.0.0.1:8000/manufacturer/")
+    fetch("http://3.25.104.164:8000/manufacturer/")
       .then((response) => response.json())
       .then(console.log("fetching"))
       .then((response) =>

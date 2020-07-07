@@ -25,11 +25,11 @@ function Address() {
     const msg = await receiveMessage();
     console.log("Message:", msg);
   }
-
+3.25.104.164
   requestMessage(); // Message: 🤡 <-- after 2 seconds
 
   React.useEffect(() => {
-    fetch("http://127.0.0.1:8000/address/")
+    fetch("http://3.25.104.164:8000/address/")
       .then((res) => res.json())
       .then(
         (result) => {
