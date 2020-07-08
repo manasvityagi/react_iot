@@ -25,7 +25,7 @@ function Address() {
     const msg = await receiveMessage();
     console.log("Message:", msg);
   }
-3.25.104.164
+
   requestMessage(); // Message: 🤡 <-- after 2 seconds
 
   React.useEffect(() => {
